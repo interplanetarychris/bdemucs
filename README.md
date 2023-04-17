@@ -15,7 +15,7 @@ The script has been tested with Ubuntu Linux and MacOS Ventura (13.2.1)
 
 From a terminal shell
 
-` brew install ffmpeg`
+`brew install ffmpeg`
 
 ### UNIX Installation
 
@@ -58,3 +58,4 @@ Input:
 ## Todo list
 
 * Add in support for CUDA gpu's. Demucs and the libraries it uses currently don't support the GPU in Silicon Macs, and my Linux machine doesn't have a GPU, so the script is currently hard-coded to use CPUs.
+* Provide command line access to other demucs models (The fine-tuned htdemucs_ft is currently default)
