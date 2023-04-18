@@ -1,7 +1,16 @@
 # bdemucs
-A bash script that uses demucs to create 4-track multi-tracks or karaoke instrumental versions of your favorite songs and albums
+A bash script that uses demucs to create 4-track multi-tracks or karaoke instrumental versions of your favorite songs and albums.  It can process individual files or entire folders at once. 
 
 By default, it will work on songs and albums, using the meta data to place the files in a directory tree, and copying the original song metadata to the new file -- with a modification to the filenames and Album titles to denote the alternate version.
+
+Use this when creating instrumental versions of songs, or gain access to multi-track stems to use with learning a part and sharing a cover on YouTube, or as a placeholder for recreating the song with all of your own contributions.
+
+## Requirements
+
+- Demucs
+- FFmpeg
+- Bash
+
 
 ## Installation
 
@@ -35,23 +44,41 @@ For bleeding edge versions, you can install directly from this repo using
 
 ## Usage
 
-`./bdemucs.sh -s -o /Users/Me/Instrumentals MySong1.flac`
+```bash
+./bdemucs.sh [OPTIONS] INPUT
+```
 
-``` bash
-/bdemucs.sh --help
+### Options
 
-Usage: bdemucs.sh [OPTIONS] INPUT
+- `-o, --output-dir DIR` - Set the output base directory (default: /Volumes/Media/Instrumentals) 
+- `-s, --save-multitrack` - Save multitrack files (default: false)  
+- `-m, --only-multitrack` - Only process multitrack files (default: false)
+- `-a, --append STRING` - String to append to Album title (default: " (Instrumental)")  
+- `-f, --file-append STRING` - String to append to file name (default: "_instrumental")
+- `-d, --debug` - Enable debug mode (default: false)
 
-Options:
-  -o, --output-dir DIR         Set the output base directory (default: /Volumes/Media/Instrumentals)
-  -s, --save-multitrack        Save multitrack files (default: false)
-  -m, --only-multitrack        Only process multitrack files (default: false)
-  -a, --append                 String to append to Album title (default: " (Instrumental)")
-  -f, --file-append            String to append to file name (default: "_instrumental")
-  -d, --debug                  Enable debug mode (default: false)
+### Input
 
-Input:
-  INPUT                        Input files or folders
+- `INPUT` - Input files or folders 
+
+## Examples
+
+Process a single file:
+
+```
+./bdemucs.sh MySong.flac
+```
+
+Process an entire folder:
+
+```
+./bdemucs.sh /path/to/music/folder
+```
+
+Save multitrack files and specify a custom append string:
+
+```
+./bdemucs.sh -s -a " (Backing Track)" /path/to/files
 ```
 
 
